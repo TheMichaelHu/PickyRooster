@@ -47,3 +47,5 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'devise'
+gem 'aws-sdk', '~> 2'
+gem 'figaro'
