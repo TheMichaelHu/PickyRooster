@@ -1,11 +1,13 @@
 <h1>Select a friend to alert</h1>
 <p>Search bar will go here one day...</p>
-<tbody>
-   <% @friends.each do |friend|%>
-   <tr>
-      <%= link_to(controller: "friends", action: "show", id: friend.id) do %>
-        <td><%= friend.email %></td>
-      <% end %>
-   </tr>
-   <% end %>
-</tbody>
+<table class="table table-striped">
+  <tbody>
+    <% @friends.each do |friend|%>
+      <tr><td>
+        <%= link_to controller: "friends", action: "show", id: friend.id do %>
+            <%= friend.email %>
+        <% end %>
+      </td></tr>
+    <% end %>
+  </tbody>
+</table>
