@@ -5,6 +5,10 @@ class FriendsController < ApplicationController
     @friends = current_user.friends
   end
 
+  def show
+    @friend = User.find(params[:id])
+  end
+
   def destroy
     current_user.remove_friend(@friend)
     head :no_content

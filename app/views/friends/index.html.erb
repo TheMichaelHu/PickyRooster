@@ -1,2 +1,11 @@
-<h1>Friends#index</h1>
-<p>Find me in app/views/friends/index.html.erb</p>
+<h1>Select a friend to alert</h1>
+<p>Search bar will go here one day...</p>
+<tbody>
+   <% @friends.each do |friend|%>
+   <tr>
+      <%= link_to(controller: "friends", action: "show", id: friend.id) do %>
+        <td><%= friend.email %></td>
+      <% end %>
+   </tr>
+   <% end %>
+</tbody>
