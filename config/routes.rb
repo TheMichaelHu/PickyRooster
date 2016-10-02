@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  post 'send_alert/:id' => 'friends#send_alert'
+  # post 'upload_alert/:id' => 'friends#upload_alert'
 
   resources :friend_requests
   resources :friends, except: [:update]
