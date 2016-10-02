@@ -21,6 +21,14 @@
                     <% end %>
                 </td>
             </tr>
+        <tr>
+            <td>
+                <%= link_to controller: "friends", action: "index", id: friend.id do %>
+                <%= friend.name || friend.email %>
+                <% end %>
+            </td>
+        </tr>
+>>>>>>> master
         <% end %>
     </tbody>
 </table>

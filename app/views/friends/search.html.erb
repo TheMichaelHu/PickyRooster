@@ -16,8 +16,8 @@
         <% @users.each do |user|%>
         <tr>
             <td>
-                <%= link_to controller: "friends", action: "show" do %>
-                <%= user %>
+                <%= link_to controller: "friends", action: "show", id: user.id do %>
+                <%= user.name || user.email %>
                 <% end %>
             </td>
         </tr>
