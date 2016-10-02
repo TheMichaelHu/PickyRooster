@@ -1,34 +1,26 @@
 <h1>Select a friend to alert</h1>
 <div class="container search">
     <%= form_tag('search', :method => "get", id: "search-form") do %>
-    <div class="row">
-        <div class="col-xs-11">
-            <%= text_field_tag :search, params[:search], placeholder: "Search Friend", class: "form-control" %>
-        </div>
-        <div class="col-xs-1">
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-        </div>
-    </div>
-    <% end %>
-
-    <% if @friends.present? %>
-    <%= form_tag action: :submit do %>
-    <div class='row user-list'>
-        <% @friends.each do |friend| %>
-            <div class='col-xs-4'>
-                <%= label_tag("#{friend}", "#{friend}") %>
+        <div class="row">
+            <div class="col-xs-12">
+                <%= text_field_tag :search, params[:search], placeholder: "Search Friend", class: "form-control" %>
             </div>
-        <% end %>
-    </div>
-    <%= submit_tag "Submit", class: "btn btn-primary" %>
-    <% end %>
-<% else %>
-    <p>No search results with that search parameter: <%= params[:search] %>.</p>
+            <div class="col-xs-12">
+                <%= submit_tag "Search", class: "btn btn-primary search-button" %>
+            </div>
+        </div>
     <% end %>
 </div>
 <table class="table table-striped">
     <tbody>
         <% @friends.each do |friend|%>
+            <tr>
+                <td>
+                    <%= link_to controller: "friends", action: "index" do %>
+                        <%= friend.email %>
+                    <% end %>
+                </td>
+            </tr>
         <tr>
             <td>
                 <%= link_to controller: "friends", action: "index", id: friend.id do %>
@@ -36,6 +28,7 @@
                 <% end %>
             </td>
         </tr>
+>>>>>>> master
         <% end %>
     </tbody>
 </table>
