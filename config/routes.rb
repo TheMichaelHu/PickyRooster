@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'friends/search' => 'friends#search'
+  get 'friend_requests' => 'friend_requests#index'
+
+  post 'friends/submit' => 'friends#submit'
+  post 'friends/show' => 'friends#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

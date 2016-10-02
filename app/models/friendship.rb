@@ -22,4 +22,8 @@ class Friendship < ActiveRecord::Base
   def not_self
     errors.add(:friend, "can't be equal to user") if user == friend
   end
+
+  def self.search(search)
+      where("lower(name) LIKE ?", "%#{search.downcase}%")
+  end
 end
