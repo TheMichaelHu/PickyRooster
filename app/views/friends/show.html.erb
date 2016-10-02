@@ -1,17 +1,117 @@
 <%= link_to "< Back to friends", controller: "friends", action: "index" %>
 <h2><%= @friend.email %></h2>
 <p>We will have option to record audio and send here</p>
-<form>
-    <div id="fileInput-div" class="form-group center-block">
-        <label for="fileInput">Upload Audio File</label>
-        <input type="file" id="fileInput" class="form-control-file" aria-describedby="fileHelp" accept="audio/*">
-    </div>
-</form>
-<form action="https://api.particle.io/v1/devices/430034000f47343432313031/setAudio?access_token=34b551612fe36e083bacebc8e50dfa269acbb610" method="POST">
-    <p>Upload your file here!<br>
-    <br>
-    <input type="radio" name="args" value="on" hidden/>
-    <br>
-    <br>
-    <input type="submit" value="Do it!">
-</form>
+
+  <h2>Record an alert</h2>
+  <button id="start" class="btn btn-success">start</button>
+  <button id="pause" class="btn btn-default"disabled>pause</button>
+  <button id="resume" class="btn btn-default" disabled>resume</button>
+  <button id="stopButton" class="btn btn-danger"disabled>send</button>
+
+  <script>
+    var recorder;
+    start.addEventListener( "click", function(){ recorder.start(); });
+    pause.addEventListener( "click", function(){ recorder.pause(); });
+    resume.addEventListener( "click", function(){ recorder.resume(); });
+    stopButton.addEventListener( "click", function(){ recorder.stop(); });
+    
+    recorder = new Recorder({
+      monitorGain: 0,
+      numberOfChannels: 1,
+      bitRate: 7874,
+      encoderSampleRate: 48000,
+      encoderPath: "/javascripts/encoderWorker.min.js"
+    });
+    recorder.addEventListener( "start", function(e){
+      start.disabled = resume.disabled = true;
+      pause.disabled = stopButton.disabled = false;
+    });
+    recorder.addEventListener( "stop", function(e){
+      pause.disabled = resume.disabled = stopButton.disabled = start.disabled = true;
+    });
+    recorder.addEventListener( "pause", function(e){
+      pause.disabled = start.disabled = true;
+      resume.disabled = stopButton.disabled = false;
+    });
+    recorder.addEventListener( "resume", function(e){
+      start.disabled = resume.disabled = true;
+      pause.disabled = stopButton.disabled = false;
+    });
+    recorder.addEventListener( "streamError", function(e){
+      console.log('Error encountered: ' + e.error.name );
+    });
+    recorder.addEventListener( "streamReady", function(e){
+      pause.disabled = resume.disabled = stopButton.disabled = true;
+      start.disabled = false;
+    });
+    recorder.addEventListener( "dataAvailable", function(e){
+      var dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
+      var fileName = new Date().toISOString() + ".ogg";
+      var url = URL.createObjectURL( dataBlob );
+
+<<<<<<< HEAD
+<script>
+  var onFail = function(e) {
+    console.log('Rejected!', e);
+  };
+
+  var onSuccess = function(s) {
+    var context = new webkitAudioContext();
+    var mediaStreamSource = context.createMediaStreamSource(s);
+    recorder = new Recorder(mediaStreamSource, {numChannels:1});
+    recorder.record();
+  }
+
+  window.URL = window.URL || window.webkitURL;
+  navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+  var recorder;
+  var audio = document.querySelector('audio');
+
+  function startRecording() {
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({audio: true}, onSuccess, onFail);
+    } else {
+      console.log('navigator.getUserMedia not present');
+    }
+  }
+
+  function stopRecording() {
+    recorder.stop();
+    recorder.exportWAV(function(s) {
+      audio.src = window.URL.createObjectURL(s);
+
+      arrayBuffer = this.result;
+        var reader  = new window.FileReader();
+        reader.readAsDataURL(s); 
+        reader.onloadend = function() {
+          var base64data = reader.result;
+          var savedWAVBlob=base64data
+          console.log(savedWAVBlob );
+
+          $.ajax({
+            url: "/send_alert/<%= @friend.id %>",
+            type: "POST",
+            data: {url:savedWAVBlob}
+          });
+        }
+    });
+  }
+</script>
+=======
+      var reader  = new window.FileReader();
+      reader.readAsDataURL(dataBlob); 
+      reader.onloadend = function() {
+        var base64data = reader.result;
+        var savedWAVBlob=base64data
+        console.log(savedWAVBlob );
+        $.ajax({
+          url: "/send_alert/<%= @friend.id %>",
+          type: "POST",
+          data: {url:savedWAVBlob}
+        });
+      }
+    });
+    recorder.initStream();
+  </script>
+>>>>>>> bc8dc72... we sendin audio
