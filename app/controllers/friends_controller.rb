@@ -14,6 +14,15 @@ class FriendsController < ApplicationController
     head :no_content
   end
 
+  def search
+      @users = User.all.map(&:email)
+      if params[:search]
+          @users = User.search(params[:search]).map(&:email)
+      else
+          @users = User.all.order("email").map(&:email)
+      end
+  end
+
   private
 
   def set_friend

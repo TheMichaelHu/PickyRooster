@@ -1,0 +1,30 @@
+@import 'https://fonts.googleapis.com/css?family=Quicksand';
+header[role="banner"] {
+  #logo-main {
+    display: block;
+    margin: 20px auto;
+    font-family: 'Quicksand', sans-serif;
+  }
+}
+
+.black {
+  color: black !important;
+}
+
+#navbar-primary.navbar-default {
+  background: transparent;
+  font-family: 'Quicksand', sans-serif;
+  border: none;
+  .navbar-nav { 
+    width: 100%;
+    text-align: center;
+    > li {
+      display: inline-block;
+      float: none;
+      > a {
+        padding-left: 30px;
+        padding-right: 30px;
+        }
+    }
+  }
+}
