@@ -1,3 +1,40 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'https://fonts.googleapis.com/css?family=Quicksand|Shadows+Into+Light';
+
+
+
+.clip-text {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 12vw;
+  color: red;
+  opacity:0.9;
+  text-shadow: 1px 1px #000000;
+}
+.section1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 5px;
+  text-align: center;
+}
+
+* {
+    text-align:center;
+}
+
+.actions {
+    font-size:15px;
+    padding-top:10px
+}
+
+.field label {
+    color:#ff99e3;
+    font-size:25px;
+    // text-shadow: 2px 2px #000000
+}
+
+.rest {
+    font-size:20px;
+    color: white !important;
+}
+
+.nav-link .brand {
+    color:black;
+}
