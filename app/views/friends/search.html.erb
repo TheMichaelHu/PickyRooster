@@ -1,0 +1,35 @@
+<h1>Search for a friend</h1>
+<div class="container search">
+    <%= form_tag('search', :method => "get", id: "search-form") do %>
+    <div class="row">
+        <div class="col-xs-11">
+            <%= text_field_tag :search, params[:search], placeholder: "Search User", class: "form-control" %>
+        </div>
+        <div class="col-xs-1">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+    </div>
+    <% end %>
+
+    <% if @users.present? %>
+    <%= form_tag action: :submit do %>
+        <div class='row user-list'>
+            <% @users.each do |food| %>
+                <div class='col-xs-4'>
+                    <% if @user.include? user %>
+                    <%= check_box_tag("#{user}", "checked", true) %>
+                <% else %>
+                    <%= check_box_tag("#{user}", "checked", false) %>
+                    <% end %>
+                    <%= label_tag("#{user}", "#{user}") %>
+                </div>
+            <% end %>
+        </div>
+        <center>
+            <%= submit_tag "Submit", class: "btn btn-primary" %>
+        </center>
+    <% end %>
+    <% else %>
+        <p>No users with the search parameter: <%= params[:search] %>.</p>
+    <% end %>
+</div>
