@@ -31,8 +31,8 @@
         <% @friends.each do |friend|%>
         <tr>
             <td>
-                <%= link_to controller: "friends", action: "show", id: friend.id do %>
-                <%= friend.name %>
+                <%= link_to controller: "friends", action: "index" do %>
+                <%= friend %>
                 <% end %>
             </td>
         </tr>
