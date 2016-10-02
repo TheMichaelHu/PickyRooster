@@ -18,23 +18,28 @@
                 <% if user_signed_in? %>
                     <li>
                         <%= link_to friends_path, class: 'nav-link' do %>
-                        <div class="black">FRIENDS</div> 
+                        <div class="black">FRIENDS</div>
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to 'friends/search', class: 'nav-link' do %>
+                        <div class="black">SEARCH</div>
                         <% end %>
                     </li>
                     <li>
                         <%= link_to destroy_user_session_path, class: 'nav-link', :method => :delete do %>
-                        <div class="black">LOGOUT</div> 
+                        <div class="black">LOGOUT</div>
                         <% end %>
                     </li>
                 <% else %>
                     <li>
                         <%= link_to new_user_session_path, class: 'nav-link' do %>
-                        <div class="black">LOGIN</div> 
+                        <div class="black">LOGIN</div>
                         <% end %>
                     </li>
                     <li>
                         <%= link_to new_user_registration_path, class: 'nav-link' do %>
-                        <div class="black">SIGN UP</div> 
+                        <div class="black">SIGN UP</div>
                         <% end %>
                     </li>
                 <% end %>

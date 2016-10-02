@@ -1,47 +1,49 @@
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
 
-
-
 .clip-text {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12vw;
-  color: red;
-  opacity:0.9;
- /*text-shadow: 1px 1px #000000;*/
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12vw;
+    color: red;
+    opacity: 0.9;
 }
+
 .section1 {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 5px;
-  text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 5px;
+    text-align: center;
 }
 
 * {
-    text-align:center;
+    text-align: center;
 }
 
 .actions {
-   font-family: 'Quicksand', sans-serif;
-    font-size:15px;
-    padding-top:10px
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+    padding-top: 10px;
 }
 
 .quicksand {
-  font-family: 'Quicksand', sans-serif !important;
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 .field label {
-  font-family: 'Quicksand', sans-serif;
-    color:black;
-    font-size:25px;
-    // text-shadow: 2px 2px #000000
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    font-size: 25px;
 }
 
 .rest {
-  font-family: 'Quicksand', sans-serif;
-    font-size:20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
     color: white !important;
 }
 
 .nav-link .brand {
-    color:black;
+    color: black;
+}
+
+#sign-up-button {
+    margin-top: 80px;
+    background-color: #a31d1d;
 }

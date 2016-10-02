@@ -1,20 +1,16 @@
 <html>
-<head >
-  <title>PickyRooster</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-</head>
-<body> 
-  <center>
-    <img src="<%= asset_path 'pickyrooster.png' %>" width=200vw>
-    <div style="font-size: 15vw" class="clip-text">Rooster</div>  
-    <div style="font-size: 7vw; color: black;" class="clip-text">Never oversleep again</div>  
-  </center>
-
-<!-- <div class="span12" style="background:url(<%= asset_path 'pickyrooster.png' %>) no-repeat; height:200px; background-size: 100% auto;"></div>
-<div style="font-size: 15vw" class="clip-text text-center">Rooster</div>   
-
-<div class="section1">
-      
-</div> -->
-</body>
+    <head >
+        <title>PickyRooster</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    </head>
+    <body>
+        <center>
+            <img src="<%= asset_path 'pickyrooster.png' %>" width=200vw>
+            <div style="font-size: 15vw" class="clip-text">Rooster</div>
+            <div style="font-size: 7vw; color: black;" class="clip-text">Never oversleep again</div>
+            <%= link_to new_user_registration_path, class: 'btn fadeMe btn-primary btn-lg', id: 'sign-up-button' do %>
+                SIGN UP NOW!
+            <% end %>
+        </center>
+    </body>
