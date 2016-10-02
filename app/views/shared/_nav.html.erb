@@ -12,7 +12,7 @@
       <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li>
-                <%= link_to destroy_user_session_path, class: 'nav-link', :method => :delete do %>
+                <%= link_to friends_path, class: 'nav-link' do %>
                   FRIENDS <i class="fa fa-pencil"></i>
                 <% end %>
               </li>
@@ -39,4 +39,3 @@
   </div>
 </nav>
 </header>
-
