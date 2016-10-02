@@ -1,13 +1,13 @@
-@import 'https://fonts.googleapis.com/css?family=Quicksand|Shadows+Into+Light';
+@import 'https://fonts.googleapis.com/css?family=Quicksand';
 
 
 
 .clip-text {
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 12vw;
   color: red;
   opacity:0.9;
-  text-shadow: 1px 1px #000000;
+ /*text-shadow: 1px 1px #000000;*/
 }
 .section1 {
   font-family: 'Quicksand', sans-serif;
@@ -20,17 +20,24 @@
 }
 
 .actions {
+   font-family: 'Quicksand', sans-serif;
     font-size:15px;
     padding-top:10px
 }
 
+.quicksand {
+  font-family: 'Quicksand', sans-serif !important;
+}
+
 .field label {
-    color:#ff99e3;
+  font-family: 'Quicksand', sans-serif;
+    color:black;
     font-size:25px;
     // text-shadow: 2px 2px #000000
 }
 
 .rest {
+  font-family: 'Quicksand', sans-serif;
     font-size:20px;
     color: white !important;
 }
