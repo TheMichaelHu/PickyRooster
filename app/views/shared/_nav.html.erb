@@ -13,6 +13,11 @@
             <% if user_signed_in? %>
               <li>
                 <%= link_to destroy_user_session_path, class: 'nav-link', :method => :delete do %>
+                  FRIENDS <i class="fa fa-pencil"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, class: 'nav-link', :method => :delete do %>
                   LOGOUT <i class="fa fa-pencil"></i>
                 <% end %>
               </li>
