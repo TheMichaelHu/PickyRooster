@@ -1,13 +1,41 @@
 <h1>Select a friend to alert</h1>
-<p>Search bar will go here one day...</p>
-<table class="table table-striped">
-  <tbody>
-    <% @friends.each do |friend|%>
-      <tr><td>
-        <%= link_to controller: "friends", action: "show", id: friend.id do %>
-            <%= friend.email %>
-        <% end %>
-      </td></tr>
+<div class="container search">
+    <%= form_tag('search', :method => "get", id: "search-form") do %>
+    <div class="row">
+        <div class="col-xs-11">
+            <%= text_field_tag :search, params[:search], placeholder: "Search Friend", class: "form-control" %>
+        </div>
+        <div class="col-xs-1">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+    </div>
     <% end %>
-  </tbody>
+
+    <% if @friends.present? %>
+    <%= form_tag action: :submit do %>
+    <div class='row user-list'>
+        <% @friends.each do |friend| %>
+            <div class='col-xs-4'>
+                <%= label_tag("#{friend}", "#{friend}") %>
+            </div>
+        <% end %>
+    </div>
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
+<% else %>
+    <p>No search results with that search parameter: <%= params[:search] %>.</p>
+    <% end %>
+</div>
+<table class="table table-striped">
+    <tbody>
+        <% @friends.each do |friend|%>
+        <tr>
+            <td>
+                <%= link_to controller: "friends", action: "show", id: friend.id do %>
+                <%= friend.name %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>

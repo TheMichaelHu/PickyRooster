@@ -2,7 +2,7 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: :destroy
 
   def index
-    @friends = current_user.friends
+    @friends = current_user.friends(&:name)
   end
 
   def show
@@ -15,11 +15,13 @@ class FriendsController < ApplicationController
   end
 
   def search
-      @users = User.all.map(&:email)
+      @friends = current_user.friends(&:name)
+      @users = User.all
+
       if params[:search]
           @users = User.search(params[:search]).map(&:email)
       else
-          @users = User.all.order("email").map(&:email)
+          @users = User.all.map(&:email)
       end
   end
 
