@@ -1,6 +1,5 @@
 <%= link_to "< Back to friends", controller: "friends", action: "index" %>
-<h2><%= @friend.email %></h2>
-<p>We will have option to record audio and send here</p>
+<h1><%= @friend.name %></h1>
 
   <h2>Record an alert</h2>
   <button id="start" class="btn btn-success">start</button>
@@ -48,57 +47,6 @@
       var dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
       var fileName = new Date().toISOString() + ".ogg";
       var url = URL.createObjectURL( dataBlob );
-
-<<<<<<< HEAD
-<script>
-  var onFail = function(e) {
-    console.log('Rejected!', e);
-  };
-
-  var onSuccess = function(s) {
-    var context = new webkitAudioContext();
-    var mediaStreamSource = context.createMediaStreamSource(s);
-    recorder = new Recorder(mediaStreamSource, {numChannels:1});
-    recorder.record();
-  }
-
-  window.URL = window.URL || window.webkitURL;
-  navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-  var recorder;
-  var audio = document.querySelector('audio');
-
-  function startRecording() {
-    if (navigator.getUserMedia) {
-      navigator.getUserMedia({audio: true}, onSuccess, onFail);
-    } else {
-      console.log('navigator.getUserMedia not present');
-    }
-  }
-
-  function stopRecording() {
-    recorder.stop();
-    recorder.exportWAV(function(s) {
-      audio.src = window.URL.createObjectURL(s);
-
-      arrayBuffer = this.result;
-        var reader  = new window.FileReader();
-        reader.readAsDataURL(s); 
-        reader.onloadend = function() {
-          var base64data = reader.result;
-          var savedWAVBlob=base64data
-          console.log(savedWAVBlob );
-
-          $.ajax({
-            url: "/send_alert/<%= @friend.id %>",
-            type: "POST",
-            data: {url:savedWAVBlob}
-          });
-        }
-    });
-  }
-</script>
-=======
       var reader  = new window.FileReader();
       reader.readAsDataURL(dataBlob); 
       reader.onloadend = function() {
@@ -114,4 +62,3 @@
     });
     recorder.initStream();
   </script>
->>>>>>> bc8dc72... we sendin audio
